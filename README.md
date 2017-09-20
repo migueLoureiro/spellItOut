@@ -4,8 +4,8 @@ Spell Numbers in full text up to 1 billion
 Aproach:
 Reusable text:
 * Units
-* Dozen (11~19)
-* Dozes (20~99)
+* Dozens (11~19)
+* Dozens (20~99)
 
 Reusable methods:
 * Hundreds

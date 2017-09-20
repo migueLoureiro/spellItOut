@@ -1,0 +1,14 @@
+Exercise 2: Spell it out
+Write a program which given a whole number between 0 and 1 billion; writes it out in words. E.g.
+542: five hundred forty-two
+23212 twenty-three thousand two hundred twelve
+1049875: one million forty-nine thousand eight hundred seventy-five
+ 
+Constraints
+·         Please don’t spend a lot of time on setting up procedures to read the input or display the output. For our purposes a method which accepts the input would suffice
+
+·         Follow clean code / SOLID principles and stay as close as possible to object oriented programming. Name variables, methods, functions appropriately. Refactor when necessary.
+
+·         Avoid static, utils or helper classes
+
+·         Make reasonable assumptions and document it as a README.md

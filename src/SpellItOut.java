@@ -2,18 +2,16 @@
  * Created by Jose.Loureiro on 2017/09/20.
  */
 public class SpellItOut {
+    
     public static void main(String args[]){
         int n = Integer.parseInt(args[0]);
-
-        int t;//temporary variables
+        int t;//temporary variable
         String r="";//string with the result;
 
         if (n == 1000000000) {
             System.out.println("one billion");
             return;
         }else{
-            /* TODO thoudsands and millions*/
-
             if (n>999999){
                 t = (n/1000)%1000000;
                 r += spellMillion(t);
@@ -63,6 +61,15 @@ public class SpellItOut {
         return r;
     }
 
+    /**
+     * Spell if needed the hundred number
+     * Diferent methods for numbers 0~19
+     *                  and number 20~99
+     * Add the space at begining
+     *
+     * @param n The number to hundreds to spell out
+     * @return The number spelled out
+     */
     public static String spellHundreds(int n){
         //variables necessary
         String r="";
@@ -85,6 +92,12 @@ public class SpellItOut {
         return r;
     }
 
+    /**
+     * Spell the dozen unitarily from 10~19
+     *
+     * @param n Number to spell out
+     * @return The numbered spelled out
+     */
     public static String spellDozenUnder20(int n){
         switch (n){
             case 10:
@@ -111,6 +124,15 @@ public class SpellItOut {
                 return "";
         }
     }
+
+    /**
+     * Spell the dozen from 20
+     * Spell the dozen part: twenty, forty, ninety...
+     * Call Unit spelling
+     *
+     * @param n Number to spell out
+     * @return The numbered spelled out
+     */
     public static String spellDozenOver20(int n){
         String r = "";
         switch (n/10){
@@ -150,6 +172,13 @@ public class SpellItOut {
         return r;
     }
 
+    /**
+     * Spell the digits 1-9
+     * 0 will return ""
+     *
+     * @param n Number to spell out
+     * @return The numbered spelled out
+     */
     public static String spellUnit(int n){
         switch (n){
             case 1:
@@ -173,5 +202,6 @@ public class SpellItOut {
             default://0 or value over 10 some error:
                 return "";
         }
+
     }//close main
 }

@@ -15,17 +15,37 @@ public class SpellItOut {
         }else{
             /* TODO thoudsands and millions*/
 
-            t1 = n%1000000;
-            //System.out.println(t1);
-            r += spellThousands(t1);
-
+            if (n>999999){
+                t1 = (n/1000)%1000000;
+                System.out.println(t1);
+                r += spellMillion(t1);
+            }
+            if (n>999) {
+                t1 = n % 1000000;
+                System.out.println(t1);
+                r += spellThousand(t1);
+            }
             t1 = n%1000;
             r += spellHundreds(t1);
         }
         System.out.println(r);
     }
 
-    public static String spellThousands(int n){
+    public static String spellMillion(int n){
+        return spellOver1000(n, "million");
+    }
+
+    public static String spellThousand(int n){
+        return spellOver1000(n, "thousand");
+    }
+
+    /**
+     *
+     * @param n number to be spelled over thousand
+     * @param s unit: thousand, million, billion, etc...
+     * @return The spelled part
+     */
+    public static String spellOver1000(int n, String s){
         int t = n/1000;
         String r = "";
 
@@ -42,7 +62,7 @@ public class SpellItOut {
                 }
             }
         }
-        r += " thousand";
+        r += " "+s;
         return r;
     }
 

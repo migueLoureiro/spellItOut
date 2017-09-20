@@ -4,9 +4,8 @@
 public class SpellItOut {
     public static void main(String args[]){
         int n = Integer.parseInt(args[0]);
-        System.out.println(n);
-        System.out.println("-------");
-        int t1,t2,t3,t4,t5,t6;//temporary variables
+
+        int t;//temporary variables
         String r="";//string with the result;
 
         if (n == 1000000000) {
@@ -16,17 +15,15 @@ public class SpellItOut {
             /* TODO thoudsands and millions*/
 
             if (n>999999){
-                t1 = (n/1000)%1000000;
-                System.out.println(t1);
-                r += spellMillion(t1);
+                t = (n/1000)%1000000;
+                r += spellMillion(t);
             }
             if (n>999) {
-                t1 = n % 1000000;
-                System.out.println(t1);
-                r += spellThousand(t1);
+                t = n % 1000000;
+                r += spellThousand(t);
             }
-            t1 = n%1000;
-            r += spellHundreds(t1);
+            t = n%1000;
+            r += spellHundreds(t);
         }
         System.out.println(r);
     }
@@ -72,7 +69,6 @@ public class SpellItOut {
         int t1 = n/100;//1st number
         int t2 = (n/10)%10;//2nd number
         int t2under20 = n%100;//10-20 value
-        int t3 = n%10;//3rd number
 
         //hundred level
         if (n>99){
@@ -150,11 +146,7 @@ public class SpellItOut {
         }
         //unit level
         int t = n%10;
-        //System.out.println(t);
         r += " " + spellUnit(t);
-        System.out.println("-----------");
-        System.out.println(r);
-        System.out.println("-----------");
         return r;
     }
 

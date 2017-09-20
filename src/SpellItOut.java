@@ -4,22 +4,49 @@
 public class SpellItOut {
     public static void main(String args[]){
         int n = Integer.parseInt(args[0]);
+        System.out.println(n);
+        System.out.println("-------");
         int t1,t2,t3,t4,t5,t6;//temporary variables
         String r="";//string with the result;
 
         if (n == 1000000000) {
             System.out.println("one billion");
+            return;
         }else{
             /* TODO thoudsands and millions*/
 
+            t1 = n%1000000;
+            //System.out.println(t1);
+            r += spellThousands(t1);
+
             t1 = n%1000;
-            r = spellHundreds(t1);
+            r += spellHundreds(t1);
         }
         System.out.println(r);
     }
 
+    public static String spellThousands(int n){
+        int t = n/1000;
+        String r = "";
+
+        if (t < 10){
+            r += " "+spellUnit(t);
+        }else{
+            if (t>100){
+                r += " " + spellHundreds(t);
+            }else {
+                if (t < 20) {
+                    r += " " + spellDozenUnder20(t);
+                } else {
+                    r += " " + spellDozenOver20(t);
+                }
+            }
+        }
+        r += " thousand";
+        return r;
+    }
+
     public static String spellHundreds(int n){
-        /* TODO values under 100 */
         //variables necessary
         String r="";
         int t1 = n/100;//1st number
@@ -27,7 +54,7 @@ public class SpellItOut {
         int t2under20 = n%100;//10-20 value
         int t3 = n%10;//3rd number
 
-        //hundread level
+        //hundred level
         if (n>99){
             r += " "+spellUnit(t1);
             r += " hundred";
@@ -37,9 +64,7 @@ public class SpellItOut {
         if (t2==1){
             r += " "+spellDozenUnder20(t2under20);
         }else {
-            r += " "+spellDozenOver20(t2);
-            //unit level
-            r += " " + spellUnit(t3);
+            r += " "+spellDozenOver20(t2under20);
         }
         return r;
     }
@@ -71,28 +96,46 @@ public class SpellItOut {
         }
     }
     public static String spellDozenOver20(int n){
-        switch (n){
+        String r = "";
+        switch (n/10){
             case 1:
-                return "";
+                r += "";
+                break;
             case 2:
-                return "twenty";
+                r += "twenty";
+                break;
             case 3:
-                return "thirty";
+                r += "thirty";
+                break;
             case 4:
-                return "fourty";
+                r += "fourty";
+                break;
             case 5:
-                return "fifty";
+                r += "fifty";
+                break;
             case 6:
-                return "sixty";
+                r += "sixty";
+                break;
             case 7:
-                return "seventy";
+                r += "seventy";
+                break;
             case 8:
-                return "eighty";
+                r += "eighty";
+                break;
             case 9:
-                return "ninety";
+                r += "ninety";
+                break;
             default://0 or value over 10 some error:
-                return "";
+                r += "";
         }
+        //unit level
+        int t = n%10;
+        //System.out.println(t);
+        r += " " + spellUnit(t);
+        System.out.println("-----------");
+        System.out.println(r);
+        System.out.println("-----------");
+        return r;
     }
 
     public static String spellUnit(int n){

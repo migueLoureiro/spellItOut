@@ -11,10 +11,13 @@ public class SpellItOut {
             System.out.println("one billion");
         }else{
             /* TODO thoudsands and millions*/
-            r = spellHundreds(n);
+
+            t1 = n%1000;
+            r = spellHundreds(t1);
         }
         System.out.println(r);
     }
+
     public static String spellHundreds(int n){
         /* TODO values under 100 */
         //variables necessary
@@ -25,8 +28,10 @@ public class SpellItOut {
         int t3 = n%10;//3rd number
 
         //hundread level
-        r += " "+spellUnit(t1);
-        r += " hundred";
+        if (n>99){
+            r += " "+spellUnit(t1);
+            r += " hundred";
+        }
 
         //dozen level
         if (t2==1){
